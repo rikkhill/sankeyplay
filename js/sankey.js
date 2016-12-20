@@ -56,7 +56,7 @@ function sankey(container, graph) {
 
     svg.selectAll(".link")
         .transition()
-            .duration(2000)
+            .duration(1000)
             .ease(d3.easeBounceOut)
             .attr("stroke-dashoffset", 0);
 
