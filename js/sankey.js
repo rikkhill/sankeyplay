@@ -41,21 +41,6 @@ function sankey(container, graph) {
         .links(graph.links)
         .layout(32);
 
-    const node = svg.append("g").selectAll(".node")
-        .data(graph.nodes)
-        .enter().append("g")
-        .attr("class", "node")
-        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-
-
-    node.append("rect")
-        .attr("height", function(d) { return d.dy; })
-        .attr("width", sankey.nodeWidth())
-        .style("fill", function(d) { return d.color; })
-        .style("stroke", function(d) { return d.color; })
-        .append("title")
-        .text(function(d) { return d.name + "\n" + format(d.value); });
-
     const link = svg.append("g").selectAll(".link")
         .data(graph.links)
         .enter().append("path")
@@ -74,6 +59,21 @@ function sankey(container, graph) {
             .duration(2000)
             .ease(d3.easeBounceOut)
             .attr("stroke-dashoffset", 0);
+
+    const node = svg.append("g").selectAll(".node")
+        .data(graph.nodes)
+        .enter().append("g")
+        .attr("class", "node")
+        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+
+    node.append("rect")
+        .attr("height", function(d) { return d.dy; })
+        .attr("width", sankey.nodeWidth())
+        .style("fill", function(d) { return d.color; })
+        .style("stroke", function(d) { return d.color; })
+        .append("title")
+        .text(function(d) { return d.name + "\n" + format(d.value); });
 
     node.append("text")
         .attr("x", -6)
