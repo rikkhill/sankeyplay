@@ -47,7 +47,7 @@ function sankey(container, graph) {
         .attr("class", "link")
         .attr("d", path)
         .style("stroke", function(d) { return d.source.color })
-        .style("stroke-width", function(d) { return Math.max(1, d.dy); })
+        .style("stroke-width", function(d) { return d.dy; })
         .sort(function(a, b) { return b.dy - a.dy; })
         .attr("stroke-dasharray", function() { return this.getTotalLength() + " " + this.getTotalLength(); })
         .attr("stroke-dashoffset", function() { return this.getTotalLength(); })
